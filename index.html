@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vegas ScrollTo</title>
+
+	<meta name="description" content="Simplified sending of data to the server. By vegas s" />
+	<meta name="author" content="vegas s" />
+	<meta name="viewport" content="width=device-width, maximum-scale=0.8, initial-scale=0.6" />
+
+	<!-- Bootstrap 4.1.2 -->
+	<link rel="stylesheet"
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+	      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+	      crossorigin="anonymous">
+
+	<style>
+		#toBlock {
+			margin-top: 2000px;
+			height: 1040px;
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container pt-5 pb-5" id="toStart">
+	<p><a href="#toBlock" class="scrollTo" data-speed="1500">Start scrolling ->>></a></p>
+</div>
+
+<div class="container pt-5 pb-5" id="toBlock">
+	<h2>Congratulations! You rolled to me.</h2>
+	<p><a href="#toStart" class="scrollTo" data-speed="500"><<<- Go to Back</a></p>
+</div>
+
+<!-- JQuery 3.3.1 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Vegas ScrollTo -->
+<script src="dist/jquery.vegasScrollTo.js"></script>
+<!-- Init -->
+<script>
+	$(document).ready(function () {
+		$('.scrollTo').vegasScrollTo();
+	});
+</script>
+</body>
+</html>
