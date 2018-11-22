@@ -1,7 +1,9 @@
 /**
  * Created by Vegas s on 22.11.2018.
  */
+
 (function( $ ) {
+	"use strict";
 
 	$.fn.vegasScrollTo = function(options) {
 
@@ -25,3 +27,11 @@
 
 	};
 })(jQuery);
+
+
+(function(document, $) {
+	"use strict";
+
+	$('[data-scrollTo]').vegasScrollTo();
+
+})(document, jQuery);

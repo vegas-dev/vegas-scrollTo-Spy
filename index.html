@@ -27,23 +27,17 @@
 <body>
 
 <div class="container pt-5 pb-5" id="toStart">
-	<p><a href="#toBlock" class="scrollTo" data-speed="1500">Start scrolling ->>></a></p>
+	<p><a href="#toBlock" data-scrollTo data-speed="1500">Start scrolling ->>></a></p>
 </div>
 
 <div class="container pt-5 pb-5" id="toBlock">
 	<h2>Congratulations! You rolled to me.</h2>
-	<p><a href="#toStart" class="scrollTo" data-speed="500"><<<- Go to Back</a></p>
+	<p><a href="#toStart" data-scrollTo data-speed="500"><<<- Go to Back</a></p>
 </div>
 
 <!-- JQuery 3.3.1 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Vegas ScrollTo -->
 <script src="dist/jquery.vegasScrollTo.js"></script>
-<!-- Init -->
-<script>
-	$(document).ready(function () {
-		$('.scrollTo').vegasScrollTo();
-	});
-</script>
 </body>
 </html>
