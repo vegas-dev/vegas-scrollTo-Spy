@@ -2,10 +2,10 @@
  * Created by Vegas s on 22.11.2018.
  */
 
-(function( $ ) {
+(function ($) {
 	"use strict";
 	
-	$.fn.vegasScrollTo = function(options) {
+	$.fn.vegasScrollTo = function (options) {
 		
 		options = $.extend({
 			speed: 1000,
@@ -32,22 +32,6 @@
 				onClick($section, false)
 			}
 			
-			function attributes(self, options) {
-				return {
-					target: self.attr('href'),
-					speed: self.data('speed') || options.speed,
-					offset: self.data('offset') || options.offset
-				};
-			}
-			
-			function destination(element, offset) {
-				return $(element).offset().top + (offset);
-			}
-			
-			function scroll(destination, speed) {
-				$('html, body').animate({ scrollTop: destination }, speed);
-			}
-			
 			function onClick(self, spy) {
 				self.on('click', function () {
 					let data = attributes($(this), options);
@@ -63,6 +47,16 @@
 					
 					return false;
 				});
+			}
+			
+			function onScroll(self) {
+				sTop(self, $(window).scrollTop());
+				
+				$(window).scroll(function () {
+					sTop(self, $(this).scrollTop())
+				});
+				
+				
 			}
 			
 			function sTop(self, scrollTop) {
@@ -84,26 +78,33 @@
 				}
 			}
 			
-			function onScroll(self) {
-				sTop(self, $(window).scrollTop());
-				
-				$(window).scroll(function () {
-					sTop(self, $(this).scrollTop())
-				});
-				
-				
+			function attributes(self, options) {
+				return {
+					target: self.attr('href') || self.data('target'),
+					speed: self.data('speed') || options.speed,
+					offset: self.data('offset') || options.offset
+				};
+			}
+			
+			function destination(element, offset) {
+				return $(element).offset().top + (offset);
+			}
+			
+			function scroll(destination, speed) {
+				$('html, body').animate({scrollTop: destination}, speed);
 			}
 		});
-		
 		
 		return this;
 	};
 })(jQuery);
 
 
-(function(document, $) {
+(function (document, $) {
 	"use strict";
 	
-	$('[data-scrollTo]').vegasScrollTo();
+	$(document).ready(function () {
+		$('[data-scrollTo]').vegasScrollTo();
+	});
 	
 })(document, jQuery);
