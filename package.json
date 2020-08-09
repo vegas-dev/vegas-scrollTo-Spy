@@ -1,0 +1,42 @@
+{
+  "name": "vgscrollto",
+  "version": "1.0.0",
+  "author": {
+    "name": "Vegas Studio",
+    "url": "https://vegas-dev.com",
+    "email": "vegas.dev.studio@gmail.com"
+  },
+  "keywords": [
+    "scroll",
+    "animation",
+    "spy",
+    "jquery"
+  ],
+  "bugs": {
+    "url": "https://github.com/vegas-dev/vegas-scrollTo-Spy/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vegas-dev/vegas-scrollTo-Spy"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^2.1.1",
+    "onchange": "^2.4.0",
+    "rimraf": "^2.5.4",
+    "uglify-js": "^3.10.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist/{css/*,js/*}",
+    "scss": "node-sass --output-style compressed -o dist/css assets/scss",
+    "uglify": "mkdirp dist/js -p && uglifyjs assets/js/*.js -m -o dist/js/vegasformsender.js && uglifyjs assets/js/*.js -m -c -o dist/js/vegasformsender.min.js",
+    "build:css": "run-s scss",
+    "build:js": "run-s uglify",
+    "build": "run-s build:*",
+    "watch:css": "onchange \"assets/scss\" -- run-s build:css",
+    "watch:js": "onchange \"assets/js\" -- run-s build:js",
+    "watch": "run-p watch:*"
+  }
+}

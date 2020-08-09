@@ -2,10 +2,10 @@
  * Created by Vegas s on 22.11.2018.
  */
 
-(function ($) {
+(function( $ ) {
 	"use strict";
 	
-	$.fn.vegasScrollTo = function (options) {
+	$.fn.vegasScrollTo = function(options) {
 		
 		options = $.extend({
 			speed: 1000,
@@ -13,15 +13,15 @@
 			spy: false,
 		}, arguments[0] || {});
 		
-		let $container = this;
+		var $container = this;
 		
 		$container.each(function () {
-			let $section = $(this);
+			var $section = $(this);
 			
 			options.spy = $section.attr('data-scrollTo') === 'spy' || false;
 			
 			if (options.spy) {
-				let $a = $section.find('a');
+				var $a = $section.find('a');
 				
 				$a.each(function () {
 					onClick($(this), true);
@@ -34,7 +34,7 @@
 			
 			function onClick(self, spy) {
 				self.on('click', function () {
-					let data = attributes($(this), options);
+					var data = attributes($(this), options);
 					
 					if ($(data.target).length) {
 						scroll(destination(data.target, data.offset), data.speed);
@@ -49,40 +49,11 @@
 				});
 			}
 			
-			function onScroll(self) {
-				sTop(self, $(window).scrollTop());
-				
-				$(window).scroll(function () {
-					sTop(self, $(this).scrollTop())
-				});
-				
-				
-			}
-			
-			function sTop(self, scrollTop) {
-				
-				let data = attributes(self, options),
-					$element = false;
-				
-				if ($(data.target).length) {
-					$element = $('body').find(data.target);
-				}
-				
-				if ($element) {
-					let dist = destination(self.attr('href'), data.offset);
-					
-					if (scrollTop >= dist) {
-						$section.find('li').removeClass('active');
-						self.closest('li').addClass('active');
-					}
-				}
-			}
-			
 			function attributes(self, options) {
 				return {
 					target: self.attr('href') || self.data('target'),
-					speed: self.data('speed') || options.speed,
-					offset: self.data('offset') || options.offset
+					speed: parseInt(self.data('speed')) || options.speed,
+					offset: parseInt(self.data('offset')) || options.offset
 				};
 			}
 			
@@ -91,16 +62,44 @@
 			}
 			
 			function scroll(destination, speed) {
-				$('html, body').animate({scrollTop: destination}, speed);
+				$('html, body').animate({ scrollTop: destination }, speed);
+			}
+			
+			function sTop(self, scrollTop) {
+				
+				var data = attributes(self, options),
+					$element = false;
+				
+				if ($(data.target).length) {
+					$element = $('body').find(data.target);
+				}
+				
+				if ($element) {
+					var dist = destination(self.attr('href'), data.offset);
+					
+					if (scrollTop >= dist) {
+						$section.find('li').removeClass('active');
+						self.closest('li').addClass('active');
+					}
+				}
+			}
+			
+			function onScroll(self) {
+				sTop(self, $(window).scrollTop());
+				
+				$(window).scroll(function () {
+					sTop(self, $(this).scrollTop())
+				});
 			}
 		});
+		
 		
 		return this;
 	};
 })(jQuery);
 
 
-(function (document, $) {
+(function(document, $) {
 	"use strict";
 	
 	$(document).ready(function () {

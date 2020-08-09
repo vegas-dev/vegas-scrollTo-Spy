@@ -7,37 +7,53 @@
 	<meta name="description" content="Simplified sending of data to the server. By vegas s" />
 	<meta name="author" content="vegas s" />
 	<meta name="viewport" content="width=device-width, maximum-scale=0.8, initial-scale=0.6" />
-
-	<!-- Bootstrap 4.1.2 -->
-	<link rel="stylesheet"
-	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
-	      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-	      crossorigin="anonymous">
-
-	<style>
-		#toBlock {
-			margin-top: 2000px;
-			height: 1040px;
-			width: 100%;
-			padding: 20px;
-			text-align: center;
-		}
-	</style>
+	
+	<link rel="shortcut icon" href="./favicon.ico">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./demo/css/custom.css">
 </head>
 <body>
 
-<div class="container pt-5 pb-5" id="toStart">
-	<p><a href="#toBlock" data-scrollTo data-speed="1500">Start scrolling ->>></a></p>
-</div>
+<div class="wrapper">
+	<div class="container">
+		<div class="header">
+			<div class="row">
+				<div class="col-md-3 col-8">
+					<div class="logo">
+						<a href="/">
+							<img src="https://vegas-dev.com/assets/_frontend/images/logo/vegas-logo.png" class="img-fluid" alt="vegas navigation">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-9 d-flex align-items-center">
+					<div>
+						<h1>Vegas ScrollTo+SPY</h1>
+						<h4>Анимированный скроллинг</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="content">
+			<div class="pt-5 pb-5" id="toStart">
+				<p><a href="#toBlock" data-scrollTo data-speed="1500">Start scrolling ->>></a></p>
+			</div>
 
-<div class="container pt-5 pb-5" id="toBlock">
-	<h2>Congratulations! You rolled to me.</h2>
-	<p><a href="#toStart" data-scrollTo data-speed="500"><<<- Go to Back</a></p>
+			<div class="pt-5 pb-5" id="toBlock">
+				<h2>Congratulations! You rolled to me.</h2>
+				<p><a href="#toStart" data-scrollTo data-speed="500"><<<- Go to Back</a></p>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<p>© Copyright <a href="https://vegas-dev.com/">vegas-dev.com</a> 2020.</p>
+		</div>
+	</div>
 </div>
 
 <!-- JQuery 3.3.1 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Vegas ScrollTo -->
-<script src="dist/jquery.vegasScrollTo.js"></script>
+<script src="./dist/js/vegasformsender.min.js"></script>
 </body>
 </html>
