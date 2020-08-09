@@ -6,15 +6,14 @@
 	"use strict";
 	
 	$.fn.vegasScrollTo = function(options) {
-		
 		options = $.extend({
 			speed: 1000,
 			offset: 0,
 			spy: false,
 		}, arguments[0] || {});
-		
+
 		var $container = this;
-		
+
 		$container.each(function () {
 			var $section = $(this);
 			
