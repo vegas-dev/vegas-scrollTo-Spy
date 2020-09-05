@@ -37,20 +37,24 @@
 					
 					if ($(data.target).length) {
 						scroll(destination(data.target, data.offset), data.speed);
+						
+						if (spy) {
+							$section.find('li').removeClass('active');
+							$(this).closest('li').addClass('active');
+						}
+
+						return false;
 					}
-					
-					if (spy) {
-						$section.find('li').removeClass('active');
-						$(this).closest('li').addClass('active');
-					}
-					
-					return false;
 				});
 			}
 			
 			function attributes(self, options) {
+				var target = self.attr('href') || self.data('target');
+
+				if (target.indexOf('#') !== -1) target = target.replace(/(^.+)#/gm, '#');
+
 				return {
-					target: self.attr('href') || self.data('target'),
+					target: target,
 					speed: parseInt(self.data('speed')) || options.speed,
 					offset: parseInt(self.data('offset')) || options.offset
 				};

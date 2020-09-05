@@ -1,6 +1,6 @@
 {
   "name": "vgscrollto",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Vegas Studio",
     "url": "https://vegas-dev.com",
@@ -30,12 +30,9 @@
   },
   "scripts": {
     "clean": "rimraf dist/{css/*,js/*}",
-    "scss": "node-sass --output-style compressed -o dist/css assets/scss",
     "uglify": "mkdirp dist/js -p && uglifyjs assets/js/*.js -m -o dist/js/vegascrollto.js && uglifyjs assets/js/*.js -m -c -o dist/js/vegascrollto.min.js",
-    "build:css": "run-s scss",
     "build:js": "run-s uglify",
     "build": "run-s build:*",
-    "watch:css": "onchange \"assets/scss\" -- run-s build:css",
     "watch:js": "onchange \"assets/js\" -- run-s build:js",
     "watch": "run-p watch:*"
   }
