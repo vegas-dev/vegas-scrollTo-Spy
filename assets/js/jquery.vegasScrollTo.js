@@ -30,6 +30,22 @@
 			} else {
 				onClick($section, false)
 			}
+
+			function attributes(self, options) {
+				var target = self.attr('href') || self.data('target');
+
+				if (target.indexOf('#') !== -1) {
+					target = target.replace(/(^.+)#/gm, '#');
+				} else if (target.indexOf('#') === -1) {
+					target = ''
+				}
+
+				return {
+					target: target,
+					speed: parseInt(self.data('speed')) || options.speed,
+					offset: parseInt(self.data('offset')) || options.offset
+				};
+			}
 			
 			function onClick(self, spy) {
 				self.on('click', function () {
@@ -48,18 +64,6 @@
 				});
 			}
 			
-			function attributes(self, options) {
-				var target = self.attr('href') || self.data('target');
-
-				if (target.indexOf('#') !== -1) target = target.replace(/(^.+)#/gm, '#');
-
-				return {
-					target: target,
-					speed: parseInt(self.data('speed')) || options.speed,
-					offset: parseInt(self.data('offset')) || options.offset
-				};
-			}
-			
 			function destination(element, offset) {
 				return $(element).offset().top + (offset);
 			}
@@ -69,11 +73,10 @@
 			}
 			
 			function sTop(self, scrollTop) {
-				
 				var data = attributes(self, options),
 					$element = false;
-				
-				if ($(data.target).length) {
+
+				if (data.target && $(data.target).length) {
 					$element = $('body').find(data.target);
 				}
 				
