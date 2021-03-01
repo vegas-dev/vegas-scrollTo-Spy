@@ -3,36 +3,33 @@
  */
 
 (function( $ ) {
-	"use strict";
-	
-	$.fn.vegasScrollTo = function(options) {
+	$.fn.vgScrollToSpy = function(options) {
 		options = $.extend({
-			speed: 1000,
+			speed: 500,
 			offset: 0,
 			spy: false,
+			hash: false
 		}, arguments[0] || {});
 
-		var $container = this;
+		return this.each(function () {
+			let $section = $(this);
 
-		$container.each(function () {
-			var $section = $(this);
-			
 			options.spy = $section.attr('data-scrollTo') === 'spy' || false;
-			
+
 			if (options.spy) {
-				var $a = $section.find('a');
-				
+				let $a = $section.find('a');
+
 				$a.each(function () {
 					onClick($(this), true);
 					onScroll($(this));
 				});
-				
+
 			} else {
 				onClick($section, false)
 			}
 
 			function attributes(self, options) {
-				var target = self.attr('href') || self.data('target');
+				let target = self.attr('href') || self.data('target');
 
 				if (target.indexOf('#') !== -1) {
 					target = target.replace(/(^.+)#/gm, '#');
@@ -46,14 +43,13 @@
 					offset: parseInt(self.data('offset')) || options.offset
 				};
 			}
-			
+
 			function onClick(self, spy) {
 				self.on('click', function () {
-					var data = attributes($(this), options);
-					
+					let data = attributes($(this), options);
 					if ($(data.target).length) {
 						scroll(destination(data.target, data.offset), data.speed);
-						
+
 						if (spy) {
 							$section.find('li').removeClass('active');
 							$(this).closest('li').addClass('active');
@@ -63,44 +59,41 @@
 					}
 				});
 			}
-			
+
 			function destination(element, offset) {
 				return $(element).offset().top + (offset);
 			}
-			
+
 			function scroll(destination, speed) {
 				$('html, body').animate({ scrollTop: destination }, speed);
 			}
-			
+
 			function sTop(self, scrollTop) {
-				var data = attributes(self, options),
+				let data = attributes(self, options),
 					$element = false;
 
 				if (data.target && $(data.target).length) {
 					$element = $('body').find(data.target);
 				}
-				
+
 				if ($element) {
-					var dist = destination(self.attr('href'), data.offset);
-					
+					let dist = destination(self.attr('href'), data.offset);
+
 					if (scrollTop >= dist) {
 						$section.find('li').removeClass('active');
 						self.closest('li').addClass('active');
 					}
 				}
 			}
-			
+
 			function onScroll(self) {
 				sTop(self, $(window).scrollTop());
-				
+
 				$(window).scroll(function () {
 					sTop(self, $(this).scrollTop())
 				});
 			}
 		});
-		
-		
-		return this;
 	};
 })(jQuery);
 
@@ -109,7 +102,7 @@
 	"use strict";
 	
 	$(document).ready(function () {
-		$('[data-scrollTo]').vegasScrollTo();
+		$('[data-scrollTo]').vgScrollToSpy();
 	});
 	
 })(document, jQuery);

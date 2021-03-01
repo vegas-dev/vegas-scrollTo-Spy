@@ -46,7 +46,7 @@ body {
 	font-size: 24px;
 	font-weight: 900;
 	text-transform: uppercase;
-	color: #333333;
+	color: #0083c9;
 }
 
 .header h4 {
@@ -57,6 +57,25 @@ body {
 
 .content {
 	padding: 70px 15px;
+}
+
+.sidebar {
+	position: sticky;
+	top: 15px;
+}
+
+.sidebar ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.sidebar ul li a {
+	display: block;
+	padding: 15px 0;
+	border-bottom: 1px solid #f5f5f5;
+	text-decoration: none;
+	color: #232323;
 }
 
 #toBlock {
@@ -75,4 +94,29 @@ body {
 
 .footer p {
 	margin: 0;
+}
+
+.scroll-top {
+	position: fixed;
+	bottom: 67px;
+	right: -60px;
+	transition: all .5s ease;
+	z-index: 989;
+}
+
+.scroll-top a {
+	font-size: 14px;
+	color: white;
+	font-weight: 300;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0083c9;
+	text-decoration: none !important;
+}
+
+.scroll-top.is-active {
+	right: 10px;
 }
