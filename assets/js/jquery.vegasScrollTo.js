@@ -65,7 +65,9 @@
 			}
 
 			function scroll(destination, speed) {
-				$('html, body').animate({ scrollTop: destination }, speed);
+				// TODO  parameter speed is not the lot
+				$(window).scrollTop(destination);
+				//$('html, body').animate({ scrollTop: destination }, speed);
 			}
 
 			function sTop(self, scrollTop) {

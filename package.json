@@ -1,6 +1,6 @@
 {
   "name": "vgscrollto",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "Vegas Studio",
     "url": "https://vegas-dev.com",
@@ -32,10 +32,8 @@
     "rimraf": "^2.5.4"
   },
   "scripts": {
-    "clean": "rimraf dist/{css/*,js/*}",
-    "scss": "node-sass --output-style compressed -o dist/css assets/scss",
+    "clean": "rimraf dist/js/*}",
     "babel": "mkdirp dist/js -p && babel assets/js/*.js -o dist/js/vgscrollto.js && babel --presets minify assets/js/*.js -o dist/js/vgscrollto.min.js",
-    "build:css": "run-s scss",
     "build:js": "run-s babel",
     "build": "run-s build:*",
     "watch:css": "onchange \"assets/scss\" -- run-s build:css",

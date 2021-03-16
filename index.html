@@ -127,26 +127,23 @@
 <script src="./assets/js/jquery.vegasScrollTo.js"></script>
 <script>
 	$(document).ready(function () {
-		let $sticky = $('.scroll-top'),
-			scroll = $(window).scrollTop();
-
-		if (scroll > 400) {
-			$sticky.addClass('is-active');
-		} else {
-			$sticky.removeClass('is-active');
-		}
+		scrollToTop($(this));
 	});
 
 	$(window).scroll(function () {
+		scrollToTop($(this));
+	});
+
+	let scrollToTop = function ($self) {
 		let $sticky = $('.scroll-top'),
-			scroll = $(this).scrollTop();
+			scroll = $self.scrollTop();
 
 		if (scroll > 400) {
 			$sticky.addClass('is-active');
 		} else {
 			$sticky.removeClass('is-active');
 		}
-	});
+	}
 </script>
 </body>
 </html>
