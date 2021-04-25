@@ -31,9 +31,9 @@
 			function attributes(self, options) {
 				let target = self.attr('href') || self.data('target');
 
-				if (target.indexOf('#') !== -1) {
+				if (target !== 'undefined' && target.indexOf('#') !== -1) {
 					target = target.replace(/(^.+)#/gm, '#');
-				} else if (target.indexOf('#') === -1) {
+				} else if (target !== 'undefined' && target.indexOf('#') === -1) {
 					target = ''
 				}
 
@@ -98,13 +98,3 @@
 		});
 	};
 })(jQuery);
-
-
-(function(document, $) {
-	"use strict";
-	
-	$(document).ready(function () {
-		$('[data-scrollTo]').vgScrollToSpy();
-	});
-	
-})(document, jQuery);
