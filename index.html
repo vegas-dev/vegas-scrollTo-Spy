@@ -114,36 +114,14 @@
 		</div>
 		
 		<div class="footer">
-			<p>© Copyright <a href="https://vegas-dev.com/">vegas-dev.com</a> 2020 - 2021.</p>
+			<p>© Copyright <a href="https://vegas-dev.com/">vegas-dev.com</a> </p>
 		</div>
 	</div>
 </div>
 
-<div class="scroll-top"><a href="#wrapper-top" data-scrollTo><i class="bi bi-chevron-up"></i></a></div>
 
-<!-- JQuery 3.3.1 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Vegas ScrollTo -->
-<script src="./assets/js/jquery.vegasScrollTo.js"></script>
-<script>
-	$(document).ready(function () {
-		scrollToTop($(this));
-	});
+<script src="./dist/vgspy.umd.js"></script>
 
-	$(window).scroll(function () {
-		scrollToTop($(this));
-	});
-
-	let scrollToTop = function ($self) {
-		let $sticky = $('.scroll-top'),
-			scroll = $self.scrollTop();
-
-		if (scroll > 400) {
-			$sticky.addClass('is-active');
-		} else {
-			$sticky.removeClass('is-active');
-		}
-	}
-</script>
 </body>
 </html>
