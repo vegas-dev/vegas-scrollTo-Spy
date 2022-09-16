@@ -52,10 +52,10 @@ class VGSpy {
 		if (!this.isInit) return;
 		let _this = this;
 
-		for (let i = 0; i < this.links.length; i++) {
-			this.links[i].onclick = function () {
+		for (let i = 0; i < _this.links.length; i++) {
+			_this.links[i].onclick = function (e) {
 				if (typeof _this.settings.onClick === 'function') {
-					_this.settings.onClick(this.links[i]);
+					_this.settings.onClick(e, this);
 				}
 
 				_this.setCurrentSection(this);
@@ -159,7 +159,7 @@ class VGSpy {
 			let target = this.attributes(this.links[i], 'target'),
 				section = document.getElementById(target);
 
-			if (options.ignore !== this.links[i]) {
+			if ((options.ignore !== this.links[i]) && section) {
 				this.links[i].classList.remove(...this.settings.activeClass);
 				section.classList.remove(...this.settings.activeClass);
 			}
