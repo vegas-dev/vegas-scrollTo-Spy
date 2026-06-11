@@ -1,6 +1,6 @@
 {
   "name": "vgscrollto",
-  "version": "2.0.1",
+  "version": "2.0.6",
   "author": {
     "name": "Vegas Studio",
     "url": "https://vegas-dev.com",
@@ -10,7 +10,7 @@
     "scroll",
     "animation",
     "spy",
-    "jquery"
+    "vanilla js"
   ],
   "bugs": {
     "url": "https://github.com/vegas-dev/vegas-scrollTo-Spy/issues"
